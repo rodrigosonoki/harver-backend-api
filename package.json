@@ -18,6 +18,7 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "dev": "nodemon src/server"
+    "dev": "nodemon src/server",
+    "start": "node src/server"
   }
 }
