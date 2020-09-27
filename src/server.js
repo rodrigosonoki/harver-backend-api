@@ -1,18 +1,18 @@
 const express = require("express");
 const session = require("express-session");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 require("dotenv/config");
 
 const authRoute = require("./app/routes/auth");
 const leadRoute = require("./app/routes/lead");
 
-const PORT = 3001;
-
 const app = express();
 
 //OPTS
 app.use(express.json());
+app.use(cors());
 app.use(
   session({
     secret: "secret",
@@ -36,4 +36,4 @@ mongoose.connect(
 app.use("/user", authRoute);
 app.use("/lead", leadRoute);
 
-app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
+app.listen(process.env.PORT || 3333, () => console.log("Server is running..."));
